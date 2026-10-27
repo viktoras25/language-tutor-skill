@@ -1,6 +1,6 @@
-# Backend: a language-learning memory server (Language Memory MCP)
+# Backend: a language-learning memory server (Language Tutor MCP)
 
-This file only maps the memory operations of `setup.md` to one concrete backend, the Language Memory MCP server. Nothing here is required by the skill itself; with another backend, use the operations in `setup.md` and ignore this file. `<lang>` is the course language code the server uses (for example `es`, `de`). A syllabus exists on the server only for languages that have imported one; if `next_topics` or `get_topic` report none, plan with the roadmap in `pacing.md`.
+This file only maps the memory operations of `setup.md` to one concrete backend, the Language Tutor MCP server. Nothing here is required by the skill itself; with another backend, use the operations in `setup.md` and ignore this file. `<lang>` is the course language code the server uses (for example `es`, `de`). A syllabus exists on the server only for languages that have imported one; if `next_topics` or `get_topic` report none, plan with the roadmap in `pacing.md`.
 
 The server is the source of truth for syllabus position, items, attempts, spaced repetition, sessions, preferences. It does not decide whether the learner has absorbed something. It never invents anything; neither should you.
 

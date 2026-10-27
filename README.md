@@ -2,7 +2,7 @@
 
 A skill that turns an AI assistant into a language tutor for any language you are learning (Spanish, German, English, and so on). It runs complete lessons: it finds your level, reviews what is due, teaches one small new step at a time, writes typed exercises, grades them fairly with partial credit, and decides when you are ready to move on.
 
-It works in any chat and does not need a server. It works best with a language-learning memory server such as the [Language Memory MCP server](https://github.com/viktoras25/language-memory-mcp), which keeps your syllabus position, history and review schedule between lessons.
+It works in any chat and does not need a server. It works best with a language-learning memory server such as the [Language Tutor MCP server](https://github.com/viktoras25/language-tutor-mcp), which keeps your syllabus position, history and review schedule between lessons.
 
 ## What it does
 
@@ -36,7 +36,7 @@ At the start the tutor checks what is available and uses the first that applies:
 
 | Option | What you do |
 |---|---|
-| **Language Memory MCP server** | Connect it once (cloud, or locally on your computer with a SQLite file; see that project's README). The tutor then reads and writes everything by itself. |
+| **Language Tutor MCP server** | Connect it once (cloud, or locally on your computer with a SQLite file; see that project's README). The tutor then reads and writes everything by itself. |
 | **Notion or a similar tool** | The tutor keeps one "progress" page per language up to date. |
 | **Chat memory** (Claude, ChatGPT, project notes) | The tutor saves one progress note as a memory. |
 | **This chat only** | At the end of each lesson the tutor gives you a short progress note. Paste it at the start of the next chat. |
@@ -45,7 +45,7 @@ The note format is in `references/backend-note.md`; it is plain text you can rea
 
 ## Using it with a memory server
 
-The skill thinks in plain operations (read the profile, the recent lessons, the review queue; record an answer; close a lesson) and never keeps its own copy of what the server knows. `references/backend-server.md` maps those operations to the tools of the Language Memory MCP server. A different server needs a similar mapping file, and nothing else changes.
+The skill thinks in plain operations (read the profile, the recent lessons, the review queue; record an answer; close a lesson) and never keeps its own copy of what the server knows. `references/backend-server.md` maps those operations to the tools of the Language Tutor MCP server. A different server needs a similar mapping file, and nothing else changes.
 
 The skill decides what to teach, how much, and whether a step is passed. A server that has a syllabus can propose the next topic; the skill treats that as a candidate. Without a syllabus the skill builds and keeps a short roadmap itself (`references/pacing.md`, "Choosing the next topic").
 
@@ -57,7 +57,7 @@ references/
   setup.md                       course language, memory operations, onboarding, placement
   pacing.md                      lesson modes, dosing, when a step is passed, choosing the next topic
   teaching.md                    lesson structure, exercise rules, grading and scoring
-  backend-server.md              mapping to the Language Memory MCP server
+  backend-server.md              mapping to the Language Tutor MCP server
   backend-note.md                progress tracking without a server (note, Notion, chat memory)
 evals/                           test cases with checks (see below)
 ```

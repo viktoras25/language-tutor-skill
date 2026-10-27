@@ -32,7 +32,7 @@ Use the first that applies:
 
 | # | Backend | How to tell | File to read |
 |---|---|---|---|
-| 1 | **A language-learning memory server** | tools for profile, lessons ("sessions"), attempts and review queues are available (for example the Language Memory MCP server) | `backend-server.md` |
+| 1 | **A language-learning memory server** | tools for profile, lessons ("sessions"), attempts and review queues are available (for example the Language Tutor MCP server) | `backend-server.md` |
 | 2 | **Notion or another document tool** | a connector is available and the learner chooses it | `backend-note.md`, with the note kept on one page |
 | 3 | **Chat memory** (Claude, ChatGPT, project notes) | the platform can save memories | `backend-note.md`, with the note saved as one memory |
 | 4 | **This chat only** | nothing else | `backend-note.md`; the learner pastes the note into the next chat |

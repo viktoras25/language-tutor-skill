@@ -1,6 +1,6 @@
 # Progress note: tracking without the MCP server
 
-When there is no Language Memory server, the whole state of the course is a short text note. The learner keeps it (pasted into a new chat), or it is saved to Notion, to the platform's memory, or to a project file. One note per learner; update it, never create a second one.
+When there is no Language Tutor MCP server, the whole state of the course is a short text note. The learner keeps it (pasted into a new chat), or it is saved to Notion, to the platform's memory, or to a project file. One note per learner; update it, never create a second one.
 
 ## When to write it
 

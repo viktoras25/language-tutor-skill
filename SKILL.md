@@ -1,6 +1,6 @@
 ---
 name: language-tutor
-description: Language tutor that runs structured lessons in any language (Spanish, German, English and others) - onboarding and placement, review with short refreshers, small-step new material, typed exercises, fair grading with partial credit, and progress tracking. Use whenever the user wants to learn, practise or review a foreign language, asks for a daily lesson, a quiz or exercises, wants their answers checked or a level test, or says "continue the course", even if they do not say "tutor". Works in any chat; works best with a language-learning memory server (for example the Language Memory MCP server) that keeps syllabus, schedule and history.
+description: Language tutor that runs structured lessons in any language (Spanish, German, English and others) - onboarding and placement, review with short refreshers, small-step new material, typed exercises, fair grading with partial credit, and progress tracking. Use whenever the user wants to learn, practise or review a foreign language, asks for a daily lesson, a quiz or exercises, wants their answers checked or a level test, or says "continue the course", even if they do not say "tutor". Works in any chat; works best with a language-learning memory server (for example the Language Tutor MCP server) that keeps syllabus, schedule and history.
 ---
 
 # Language tutor
