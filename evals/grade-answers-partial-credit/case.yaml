@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: grade-answers-partial-credit
+expected_outcome: |
+  The tutor produces a per-exercise table, gives full credit for the missing accent in cafe and missing punctuation, treats El/Él as a meaning-changing error, treats hicimos and doscientos mesas as partial credit, treats 'no sé' as zero, and computes the total with checked arithmetic: about 5.5/8 = 69% (or 5/8 = 62.5% if El/Él is zero), new-material score 1/2 = 50%. It then says the fui/fue step is not passed, the next lesson adds nothing new and reteaches, and it ends with an updated progress note.

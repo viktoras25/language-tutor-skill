@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: first-lesson-new-learner
+expected_outcome: |
+  The tutor does not start a grammar lesson. It onboards the learner in one batched message (background, goals, time, explanation language, format), proposes or runs a short typed placement test because the learner is not a true beginner, and says where progress will be kept. Written in Russian.

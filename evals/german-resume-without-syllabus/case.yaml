@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: german-resume-without-syllabus
+expected_outcome: |
+  Without a syllabus, the tutor chooses the next topic itself: it states a short roadmap (about 5 or more ordered topics that fit the goal of moving to Germany and office work), takes the next step from it (a small step following Perfekt, or confirmation of Perfekt with sein first), reviews due items in new sentences, uses German content only, up to three new words, typed numbered exercises, no hints, and ends with an updated note that includes the roadmap.

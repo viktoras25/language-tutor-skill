@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: resume-from-note-normal-mode
+expected_outcome: |
+  The tutor reads the note and restates the plan in one line, picks the normal mode, introduces one small new step (hice/hizo only), up to three new words, reviews the items due on or before 2026-10-28 in new sentences, starts with a short refresher where needed, gives typed numbered exercises without hints, and ends with an updated note in the same format.
