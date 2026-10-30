@@ -69,7 +69,7 @@ When unsure whether something is a slip or a gap, grade it as partial and note t
 **Computing the score**
 
 1. Write the per-exercise table: answer, result, credit, correct form.
-2. Sum credits, divide by the number of exercises, and check the arithmetic once more. A closed session's score cannot be changed.
+2. Sum credits, divide by the number of exercises, and check the arithmetic once more before recording the score.
 3. Compute two numbers: overall, and **new-material only** (needed for the gate in `pacing.md`).
 4. Do not round up or down to make the result look better or worse.
 
