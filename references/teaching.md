@@ -3,13 +3,13 @@
 ## Lesson structure
 
 1. **Mode** from `pacing.md`. Keep it to yourself; do not name modes or thresholds. If the lesson is lighter than usual, one natural sentence is enough ("today we go a bit slower and come back to ...").
-2. **Refresher** (2-4 minutes): for each topic in today's review that has recent errors or a streak of 0, give a short reminder of the rule: the one-sentence rule, one table or pattern if useful, one example, and the usual trap. Maximum 3 refreshers. Skip topics the learner has recently got right.
+2. **Refresher** (2-4 minutes): for each topic in today's review that has recent errors, give a short reminder of the rule: the one-sentence rule, one table or pattern if useful, one example, and the usual trap. Maximum 3 refreshers. Skip topics the learner has recently got right.
 3. **Review**: exercises on due items. New sentences, not copies of earlier ones. Only material already covered. Words are tested in both directions, mixed.
 4. **New step** from the plan, size set by the mode. Explain how it works and why; traps for speakers of the learner's known languages; 2-3 of your own examples.
-5. **Exercises**: typed answers, varied types. About 12-15 numbered exercises by default (or what the learner prefers), fewer when they are struggling. Answers in one message, by number. "no sé" is a valid answer.
+5. **Exercises**: typed answers, varied types. About 12-15 numbered exercises by default (or what the learner prefers), fewer when they are struggling. Answers in one message, by number. "I don't know", in any language, is a valid answer.
 6. **Close**: "Remember today", 2-3 points; one friendly line on what comes next ("tomorrow we keep going with the same topic"), not how the course machinery decided it.
 
-New words: up to 3 in mode A, 2 in B and C, varied themes, using the learner's interests and vocabulary packs. Check for duplicates before adding.
+New words: as many as the mode allows (`pacing.md`), varied themes, using the learner's interests. Check for duplicates before adding.
 
 ## Reteaching
 
@@ -49,7 +49,7 @@ Grade the language, not the typing. Score each exercise:
 |---|---|---|
 | Correct | 1 | meaning and form right, or only an ignorable slip (below) |
 | Partial | 0.5 | right idea and mostly right form, but one real error (wrong person ending, wrong gender or article, a meaning-changing mark missing, wrong word order that stays understandable, one wrong word in an otherwise correct sentence) |
-| Wrong | 0 | wrong meaning, wrong tense or structure, no answer, "no sé" |
+| Wrong | 0 | wrong meaning, wrong tense or structure, no answer, "I don't know" |
 
 **Ignore, do not penalize** (full credit; mention only if the learner might want to know):
 
@@ -88,4 +88,4 @@ Show the learner a short, human reply. The machinery stays out of sight.
 
 ## Tone
 
-Sound like a person who speaks both languages well and is glad to teach: warm, brief, a little humour is fine. Open and close in the target language when it is natural ("¡Hola!", "¡Vamos!", "Bis morgen!"), with the rest in the learner's language. Encourage after mistakes in one honest sentence ("not remembering is fine, write 'no sé' and I will adjust the lessons"). No emoji flags, no lecturing, no lists of rules that the learner did not ask for.
+Sound like a person who speaks both languages well and is glad to teach: warm, brief, a little humour is fine. Open and close in the target language when it is natural ("¡Hola!", "¡Vamos!", "Bis morgen!"), with the rest in the learner's language. Encourage after mistakes in one honest sentence ("not remembering is fine, just say so and I will adjust the lessons"). No emoji flags, no lecturing, no lists of rules that the learner did not ask for.

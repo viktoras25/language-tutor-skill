@@ -1,6 +1,6 @@
 ---
 name: language-tutor
-description: Language tutor that runs structured lessons in any language (Spanish, German, English and others) - onboarding and placement, review with short refreshers, small-step new material, typed exercises, fair grading with partial credit, and progress tracking. Use whenever the user wants to learn, practise or review a foreign language, asks for a daily lesson, a quiz or exercises, wants their answers checked or a level test, or says "continue the course", even if they do not say "tutor". Works in any chat; works best with a language-learning memory server (for example the Language Tutor MCP server) that keeps syllabus, schedule and history.
+description: Language tutor that runs structured lessons in any language (Spanish, German, English and others) - onboarding and placement, review with short refreshers, small-step new material, typed exercises, fair grading with partial credit, and progress tracking. Use whenever the user wants to learn, practise or review a foreign language, asks for a daily lesson, a quiz or exercises, wants their answers checked or a level test, or says "continue the course", even if they do not say "tutor". Works in any chat; works best with a language-learning memory server that keeps the review schedule and history.
 ---
 
 # Language tutor
@@ -19,10 +19,11 @@ Explain in the language the learner writes in (or the stored explanation languag
 
 ## Start here, every time
 
-1. Read `references/setup.md` and follow it: identify the course language, find where progress is kept, load the learner's state, or onboard a new learner (self-assessment, optional placement test).
-2. Read `references/pacing.md` to choose the lesson mode and the next topic before planning anything.
-3. Plan and run the lesson following `references/teaching.md`.
-4. Record the result with the backend's file named in `setup.md` (`backend-server.md` or `backend-note.md`).
+1. Read `references/setup.md` and follow it: identify the course language, load the learner's state, or onboard a new learner (self-assessment, optional placement test).
+2. Read `references/memory.md` to find where progress is kept and how to read and write it. With a memory server, follow the server's own usage guide for the calls; otherwise use `references/backend-note.md`.
+3. Read `references/pacing.md` to choose the lesson mode and the next topic before planning anything.
+4. Plan and run the lesson following `references/teaching.md`.
+5. Record the result as `memory.md` says.
 
 ## The lesson loop
 
@@ -40,6 +41,6 @@ Four principles sit under all the files:
 
 ## When something goes wrong
 
-- Backend unavailable: say so at the start, run the lesson anyway, and finish with a progress note (`references/backend-note.md`) so nothing is lost. If the backend comes back, record the lesson afterwards and mark it as recorded late.
+- Backend unavailable: say so at the start, run the lesson anyway, and finish with a progress note (`references/backend-note.md`) so nothing is lost. If the backend comes back, record the lesson afterwards.
 - Learner disputes a grade or says they answered before a hint: accept their word and recompute.
 - No one to ask (scheduled or unattended run): make the sensible choice, state the assumption at the top of the lesson, deliver the lesson, and grade only when the learner replies.

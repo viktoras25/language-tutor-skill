@@ -1,77 +1,98 @@
 # Language tutor skill
 
-A skill that turns an AI assistant into a language tutor for any language you are learning (Spanish, German, English, and so on). It runs complete lessons: it finds your level, reviews what is due, teaches one small new step at a time, writes typed exercises, grades them fairly with partial credit, and decides when you are ready to move on.
+A skill that turns an AI assistant into a language tutor. It teaches any language and explains in any language: Spanish in Russian, English in German, German in English. It runs complete lessons: it finds your level, reviews what is due, teaches one small new step at a time, writes typed exercises, grades them fairly, and decides when you are ready to move on.
 
-It works in any chat and does not need a server. It works best with a language-learning memory server such as the [Language Tutor MCP server](https://github.com/viktoras25/language-tutor-mcp), which keeps your syllabus position, history and review schedule between lessons.
+## How the pieces fit
+
+```
+you, or a scheduled task   ->   this skill   ->   memory
+"continue my Spanish"           teaches,          a pasted note, a document,
+                                grades, paces     chat memory, or a memory server
+```
+
+The skill is the middle piece and works on its own. It needs no server and no schedule; add either when you want them.
+
+- **Memory** only remembers. The skill decides what to teach, how much, and whether a step is learned.
+- **A schedule** only starts a lesson. If nobody is there to answer, the skill delivers the lesson and grades it when you reply.
+
+## Quick start
+
+Install the skill (below), then say what you want to learn. The tutor explains in the language you write in:
+
+- "Let's learn German."
+- "Продолжаем испанский."
+- "Ich möchte mein Englisch auffrischen."
+
+A new learner gets a few questions and, unless they are a true beginner, a short placement test. After that every lesson follows the same shape: a refresher of rules you keep missing, review, one small new step, typed exercises, a fair check.
 
 ## What it does
 
-- **Onboarding and placement.** A new learner answers a few questions; unless they are a true beginner, a short typed test confirms the level and records which topics are already known.
-- **Lessons.** Short refresher of rules you keep missing, review of what is due, one small new step, 15-16 typed exercises with no hints in the prompts.
-- **Fair grading.** Full, half or no credit per exercise. Slips that do not change meaning (for example a missing accent on Spanish *café*, umlauts typed as *ae/oe/ue* in German, an obvious typo) are not penalized; marks that do (Spanish *él/el*, *pagué/pague*) are.
-- **Pacing that adapts.** Three modes (normal, slow down, consolidate) chosen from your recent scores and repeated errors. A step counts as learned only after enough correct answers *and* a correct answer on a later day.
-- **Reteaching.** If a topic keeps failing, it explains it again from a different angle instead of drilling the same sentences.
+- **Onboarding and placement.** A few questions, then a short typed test that confirms the level and records which topics you already know.
+- **Lessons.** A short refresher, review of what is due, one small new step, typed exercises with no hints in the prompts.
+- **Fair grading.** Full, half or no credit per exercise. Slips that do not change meaning are not penalized (a missing accent on Spanish *café*, German umlauts typed as *ae/oe/ue*, an obvious typo); marks that do change it are (Spanish *él/el*, *pagué/pague*).
+- **Pacing that adapts.** Three modes (normal, slow down, consolidate), chosen from your recent scores and repeated errors. A step counts as learned only after enough correct answers and a correct answer on a later day.
+- **Reteaching.** If a topic keeps failing, the tutor explains it again from a different angle instead of drilling the same sentences.
 
 ## Install
 
-**Claude Code** (any platform):
+**Claude Code:**
 
 ```sh
-git clone <this repo> ~/.claude/skills/language-tutor
+git clone https://github.com/viktoras25/language-tutor-skill ~/.claude/skills/language-tutor
 ```
 
-**Claude Desktop / claude.ai:** zip the folder with `SKILL.md` at the top level and upload it in Settings, Skills:
+**Claude Desktop / claude.ai:** zip the skill and upload it in Settings, Skills:
 
 ```sh
 zip -r language-tutor.zip SKILL.md references
 ```
 
-**Other assistants:** paste `SKILL.md` as the instructions and attach the files in `references/` (the instructions refer to them by name).
-
-Then say something like "Let's learn German" or "continue my Spanish lesson".
+**Other assistants:** paste `SKILL.md` as the instructions and attach the files in `references/`.
 
 ## Where your progress is kept
 
-At the start the tutor checks what is available and uses the first that applies:
+The tutor checks what is available and uses the first that applies:
 
 | Option | What you do |
 |---|---|
-| **Language Tutor MCP server** | Connect it once (cloud, or locally on your computer with a SQLite file; see that project's README). The tutor then reads and writes everything by itself. |
-| **Notion or a similar tool** | The tutor keeps one "progress" page per language up to date. |
-| **Chat memory** (Claude, ChatGPT, project notes) | The tutor saves one progress note as a memory. |
-| **This chat only** | At the end of each lesson the tutor gives you a short progress note. Paste it at the start of the next chat. |
+| **A memory server** | Connect it once. The tutor reads and writes everything by itself. |
+| **Notion or a similar tool** | The tutor keeps one progress page per language up to date. |
+| **Chat memory** | The tutor saves one progress note as a memory. |
+| **This chat only** | Ask for your progress note when you stop, and paste it at the start of the next chat. |
 
-The note format is in `references/backend-note.md`; it is plain text you can read and edit.
+The note is plain text you can read and edit; its format is in `references/backend-note.md`.
 
-## Using it with a memory server
+## Using a memory server
 
-The skill thinks in plain operations (read the profile, the recent lessons, the review queue; record an answer; close a lesson) and never keeps its own copy of what the server knows. `references/backend-server.md` maps those operations to the tools of the Language Tutor MCP server. A different server needs a similar mapping file, and nothing else changes.
+`references/memory.md` lists what the skill reads and writes in plain operations: profile, recent lessons, review queue, graded answers, the close of a lesson. Any server that covers them works. The server explains its own tools; the skill carries no server-specific instructions.
 
-The skill decides what to teach, how much, and whether a step is passed. A server that has a syllabus can propose the next topic; the skill treats that as a candidate. Without a syllabus the skill builds and keeps a short roadmap itself (`references/pacing.md`, "Choosing the next topic").
+The [Language Tutor MCP server](https://github.com/viktoras25/language-tutor-mcp) is built for this skill. It adds spaced repetition, per-topic history and an optional syllabus, and runs in the cloud or locally with one SQLite file.
 
-## Repository layout
+A server with a syllabus proposes the next topic, and the skill treats the proposal as a candidate. Without a syllabus the skill builds a short roadmap from your goals and keeps it up to date.
+
+## Files
 
 ```
-SKILL.md                         entry point: roles, start-up order, lesson loop
+SKILL.md                 entry point: roles, start-up order, lesson loop
 references/
-  setup.md                       course language, memory operations, onboarding, placement
-  pacing.md                      lesson modes, dosing, when a step is passed, choosing the next topic
-  teaching.md                    lesson structure, exercise rules, grading and scoring
-  backend-server.md              mapping to the Language Tutor MCP server
-  backend-note.md                progress tracking without a server (note, Notion, chat memory)
-evals/                           test cases with checks (see below)
+  setup.md               course language, onboarding, placement
+  memory.md              what the skill reads and writes; rules for every backend
+  backend-note.md        the progress note, for use without a server
+  pacing.md              lesson modes, dosing, when a step is passed, choosing the next topic
+  teaching.md            lesson structure, exercise rules, grading
+evals/                   test scenarios with checks
 ```
 
 ## Adjusting it
 
-- **Thresholds** (75% / 70% / 65%, five exercises per step) live in `references/pacing.md`, each with its reason. Change them there.
+- **Your preferences** (answer format, number of exercises, topics you like): tell the tutor. It stores them with your progress.
+- **Pacing thresholds** are in `references/pacing.md`, each with its reason.
 - **Grading leniency** is in the grading section of `references/teaching.md`.
-- **Language knowledge** is not bundled: the tutor uses what the model already knows about the language, its typical difficulties and the traps for speakers of your languages. If you want a fixed order for a language, add it as a section of `references/pacing.md` or tell the tutor.
-- **Your own preferences** (typed answers, number of exercises, topics you like) are stored by the tutor in your profile or progress note; you can simply tell it.
+- **Language knowledge** is not bundled. The tutor uses what the model knows about the language, its typical difficulties and the traps for speakers of your languages.
 
 ## Tests
 
-`evals/` holds six scenarios in the format used by Claude's skill-creator and `claude plugin eval`: a first lesson with no history, a slow-down after weak lessons, grading answers with partial credit, and resuming from a progress note (all in Spanish), and the same two ideas in German (choosing a topic without a syllabus; grading with umlaut substitutes and article errors). Each has a prompt and a list of checks. Run them with a skill-creator session, or from the repository root:
+`evals/` holds six scenarios, each a prompt with a list of checks: a first lesson, a slow-down after weak lessons, grading with partial credit, and resuming from a progress note in Spanish; choosing a topic without a syllabus and grading with umlaut substitutes in German. Run them with a skill-creator session, or from the repository root:
 
 ```sh
 claude plugin eval . --allow-tools Write,Edit,Bash

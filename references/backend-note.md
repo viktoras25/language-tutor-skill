@@ -1,6 +1,6 @@
-# Progress note: tracking without the MCP server
+# Progress note: tracking without a memory server
 
-When there is no Language Tutor MCP server, the whole state of the course is a short text note. The learner keeps it (pasted into a new chat), or it is saved to Notion, to the platform's memory, or to a project file. One note per learner; update it, never create a second one.
+When there is no memory server, the whole state of the course is a short text note. The learner keeps it (pasted into a new chat), or it is saved to Notion, to the platform's memory, or to a project file. One note per learner; update it, never create a second one.
 
 ## When to write it
 
@@ -15,7 +15,7 @@ Keep it under about 60 lines. Trim old entries instead of letting it grow.
 
 ```
 PROGRESS NOTE: <language> (updated YYYY-MM-DD)
-profile: ui_lang=..., variety=<regional variety or none>, known_langs=..., goal=..., prefs=<typed answers; 15 exercises; ...>
+profile: ui_lang=..., variety=<regional variety or none>, known_langs=..., goal=..., prefs=<answer format; number of exercises; ...>
 level: <A1 start | A1 solid | ...> (placement YYYY-MM-DD: <score>)
 assumed topics: <comma list, only those proven by placement>
 lessons: N done; last 3:
@@ -30,6 +30,8 @@ words learned: <lemma = translation>, ... (last ~40; older ones summarized)
 roadmap: <next 8-12 topics in order, when there is no syllabus>
 next lesson plan: mode <A|B|C>; review ...; new ...; reteach ...
 ```
+
+The note carries every operation of `memory.md` as text: `profile` and `level` are the profile and course state, `lessons` the recent lessons, `open steps` the step history, and `next lesson plan` the close of the last lesson.
 
 ## Spaced repetition without a server
 

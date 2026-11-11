@@ -6,7 +6,7 @@ Modes and thresholds are internal. Never announce them to the learner; the lesso
 
 ## Inputs
 
-Take these from the backend or the progress note:
+Take these from the backend:
 
 - Scores of the last two lessons (computed per `teaching.md`, with partial credit).
 - Score on **new material only** in the last lesson (new items correct / new items attempted). This matters more than the overall score, because review inflates it.
@@ -17,13 +17,15 @@ Take these from the backend or the progress note:
 
 | Mode | When | Lesson |
 |---|---|---|
-| **A, normal** | last two scores >= 75% and <= 3 recurring errors | review about 40%, one new topic in small steps, up to 3 new words |
-| **B, slow down** | either of the last two < 70%, or >= 4 recurring errors, or new-material score < 60% | review 65-70%; new material only one micro-step (one form, one person, one verb); up to 2 words |
-| **C, consolidate** | two lessons in a row < 65% | review only; no new grammar; up to 2 words already seen |
+| **A, normal** | both of the last two scores >= 75%, at most 3 recurring errors, and new-material score >= 60% | review about 40%, one new topic in small steps, up to 3 new words |
+| **B, slow down** | anything that is neither A nor C | review 65-70%; new material only one micro-step (one form, one person, one verb); up to 2 new words |
+| **C, consolidate** | both of the last two scores < 65% | review only; no new grammar and no new words |
 
-- **First lesson, no history:** mode A, but with the smallest step of its topic.
+The table decides when a learner drops to a slower mode. Getting back to a faster one follows only these exit rules:
+
+- **Leaving B:** one lesson at 75% or better with new-material score >= 70%, then A.
 - **Leaving C:** one review lesson at 75% or better, then B for one lesson, then A.
-- **Leaving B:** one lesson at 75% or better with new-material score >= 70%.
+- **First lesson, no history:** mode A, but with the smallest step of its topic.
 - Do not stay in C for more than three lessons. If review still fails, the problem is the explanation, not repetition: reteach the failing topics from scratch (see `teaching.md`, reteach section) and consider that the earlier step was introduced too fast.
 
 ## Dosing new material
@@ -35,7 +37,7 @@ Take these from the backend or the progress note:
   2. the remaining persons;
   3. mixed production interleaved with review.
 - Order the pieces inside a topic with your knowledge of the language: the most frequent and most regular first, one irregular item at a time, contrasts with the learner's own languages only after the basic form is stable (for example, in Spanish the irregular past forms of *ser/ir*, *hacer* and *tener* go in separate lessons, not together).
-- "New" means no earlier attempts on that topic or word in the backend or note. Anything with attempts is review. Never present review as a new topic.
+- "New" means no earlier attempts on that topic or word in the backend. Anything with attempts is review. Never present review as a new topic.
 
 ## Step gate: when a step counts as passed
 
@@ -49,8 +51,8 @@ Until all three hold, the step stays open: do not move on, and do not mark the t
 
 Compute the gate from the data you have:
 
-- MCP: `get_context(topic_item, attempts_limit=20)` gives timestamps and the `credit` of each attempt (only a `correct` flag on older servers, where a partial answer shows as false). Also use the new-material counter you stored in the last session's `next_step`.
-- Note: the progress note has a `gate` line per open step (`references/backend-note.md`).
+- The gate line you wrote at the close of the last lesson (in a progress note, the `open steps (gate)` block) is the running count.
+- When the backend offers step history (`memory.md`), check the count against it: the dated answers and their credit.
 
 Record the gate state every lesson in plain words, for example: `gate fui/fue step 1: 4.5/6 = 75%, confirm pending`.
 
