@@ -27,9 +27,11 @@ Record with `save_session`, once per graded turn (when you grade the learner's a
 What goes in it:
 
 - **New words and forms (`items`):** `find_items` first if you are unsure whether the item exists. Type `lemma`, `form`, `grammar_point` or `collocation`. For words, `data` has `display`, `gender`, `translation`, `example`, `pos`. The id is `<lang>:<type>:<lowercased label>` and is returned by the call; relations go in `links` (`src`, `dst`, `type`).
-- **Every graded exercise (`attempts`):** `{item_id, correct, error_type, context}`.
-  - The server records only right/wrong. Map the grading table: credit 1 -> `correct=true`; partial and wrong -> `correct=false` with the `error_type` of the real error. Keep the partial credit in your own tally and in `context`, for example `"partial 0.5: answered 'pague', correct 'pagué' (accent changes the tense)"`.
-  - An ignorable slip is `correct=true` and needs no error type.
+- **Every graded exercise (`attempts`):** `{item_id, credit, error_type, context}`.
+  - `credit` is the number from the grading table in `teaching.md`: 1, 0.5 or 0 (any value from 0 to 1 is accepted). The server uses it for spacing: a partial answer keeps the item's interval instead of sending it back to day one.
+  - Give `error_type` for every attempt with credit below 1, naming the real error, and note the credit in `context`, for example `"partial 0.5: answered 'pague', correct 'pagué' (accent changes the tense)"`.
+  - An ignorable slip is `credit=1` and needs no error type.
+  - **Older server without `credit`:** if the tool schema has no `credit` field or the call is rejected for it, send `correct` instead: credit 1 -> `correct=true`; partial and wrong -> `correct=false` with the `error_type`. Keep the partial credit in your tally and in `context`.
   - Do not hard-code the list of error types. If the server rejects a value it returns the allowed ones; read the message and fix the call.
   - Do not pass `ts`, except when recording a past lesson (below). Do not store intervals or statuses in `data`.
   - `context` = exercise + answer -> correct form.

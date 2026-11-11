@@ -49,7 +49,7 @@ Until all three hold, the step stays open: do not move on, and do not mark the t
 
 Compute the gate from the data you have:
 
-- MCP: `get_context(topic_item, attempts_limit=20)` gives timestamps and correct flags. Also use the new-material counter you stored in the last session's `next_step`.
+- MCP: `get_context(topic_item, attempts_limit=20)` gives timestamps and the `credit` of each attempt (only a `correct` flag on older servers, where a partial answer shows as false). Also use the new-material counter you stored in the last session's `next_step`.
 - Note: the progress note has a `gate` line per open step (`references/backend-note.md`).
 
 Record the gate state every lesson in plain words, for example: `gate fui/fue step 1: 4.5/6 = 75%, confirm pending`.
