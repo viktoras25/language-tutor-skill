@@ -8,13 +8,23 @@ The server is the source of truth for syllabus position, items, attempts, spaced
 
 1. `get_profile` - `ui_lang`, `known_langs`, `variety`, vocabulary packs.
 2. `get_course_state(<lang>)` - learner preferences (`format_prefs`) and the `plan` summary. Follow `format_prefs`.
-3. `list_sessions(<lang>, 3)` - recent lessons with `summary`, `score`, `next_step`. The newest `next_step` is the plan for this lesson (see "Where the plan lives" below). A lesson without `score` and `next_step` was not finished; its `summary` and attempts (`get_session`) show how far it got.
+3. `list_sessions(<lang>, 3)` - recent graded lessons with `summary`, `score`, `next_step` (delivered-but-unanswered ones are hidden; see "Delivered but not answered" below). The newest `next_step` is the plan for this lesson (see "Where the plan lives" below). A lesson without `score` and `next_step` was not finished; its `summary` and attempts (`get_session`) show how far it got.
 4. `due_items(<lang>, 15, date=<learner's local date>)` - what to review. Pass `date` explicitly; the default is UTC and can be a day off.
 5. `weak_items(<lang>)` and `get_context(item_id, attempts_limit=10)` on the most frequent errors, to see earlier answers and avoid reusing sentences, and to compute the step gate (`pacing.md`).
 6. `next_topics(<lang>)` - `continue` (topics following the current one) and `fill` (earlier gaps). The server proposes; you choose, using the pacing rules. If the current step is not passed, stay on it even though the server lists the next topic.
 7. `get_topic(<lang>, topic_id)` - the lesson card. Texts are English; explain in `ui_lang`.
 
-Nothing is opened before the lesson: the session is created by the first `save_session` call.
+In an attended lesson nothing is opened before it starts: the session is created by the first `save_session` call.
+
+### Delivered but not answered (unattended runs)
+
+When there is no learner to answer now (a scheduled run), a delivered lesson is saved as **pending** so it does not show up as an empty lesson:
+
+- **Delivering:** `save_session(lang, title="Lesson N: <topic>", plan="<brief>", status="pending")`. Keep the exercises and the answer key in the delivered text; the server does not store them yet.
+- **Before building a new lesson:** call `list_sessions(<lang>, 3, include_pending=true)`. If a session with `status="pending"` is 3 days old or less (`delivered_at`), the learner has not answered it yet: do not create another lesson. Send at most one short reminder, and only on the first day.
+- **Older pending lesson:** build a fresh lesson from today's data and save it with `status="pending"`. The server marks the old one abandoned on its own.
+- **When the learner answers a pending lesson:** grade it and call `save_session(id=<the pending id>, attempts=[...])`. Saving attempts makes it a normal graded lesson, even if it had been abandoned in the meantime. Do not create a second session for the same lesson.
+- **Older server** (no `status` field in the tool or in the sessions): skip all of this and record lessons as before.
 
 ## Recording during and after the lesson
 
